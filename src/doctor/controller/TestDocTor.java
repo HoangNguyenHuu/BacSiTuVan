@@ -31,8 +31,13 @@ public class TestDocTor {
 		String id19 = "1408";// Tức ngực
 		String id20 = "1409";// Tiêu chảy
 		String id21 = "1410";// Hắt hơi
+		String id22 = "1411";// Rối loạn ý thức
+		String id23 = "1412";// Phát ban
+		String id24 = "1413";// Chảy máu dưới da
+		String id25 = "1414";// Chảy máu chân răng
 //		String id29 = "2101";// Bệnh nhân bị cúm A H1N1
 		String id30 = "2102";// Bệnh nhân bị cúm A H3N2
+		
 
 
 		ArrayList<String> listID1 = new ArrayList<>(Arrays.asList(id2, id3, id4, id5));
@@ -45,6 +50,8 @@ public class TestDocTor {
 		ArrayList<String> listID8 = new ArrayList<>(Arrays.asList(id18, id19));
 		ArrayList<String> listID9 = new ArrayList<>(Arrays.asList(id20, id21));
 		ArrayList<String> listID10 = new ArrayList<>(Arrays.asList(id20, id21));
+		ArrayList<String> listID11 = new ArrayList<>(Arrays.asList(id22, id23));
+		ArrayList<String> listID12 = new ArrayList<>(Arrays.asList(id24, id25));
 
 		Rule rule1 = new Rule("r1", id1, listID1, 0.6);
 		Rule rule2 = new Rule("r2", id3, listID2, 0.7);
@@ -56,10 +63,12 @@ public class TestDocTor {
 		Rule rule8 = new Rule("r8", id12, listID8, 0.6);
 		Rule rule9 = new Rule("r9", id13, listID9, 0.6);
 		Rule rule10 = new Rule("r10", id30, listID10, 0.6);
+		Rule rule11 = new Rule("r11", id8, listID11, 0.6);
+		Rule rule12 = new Rule("r12", id8, listID12, 0.6);
 		
 
 		ArrayList<Rule> listAllRule = new ArrayList<>(
-				Arrays.asList(rule1, rule2, rule3, rule4, rule5, rule6, rule7, rule8, rule9, rule10));;
+				Arrays.asList(rule1, rule2, rule3, rule4, rule5, rule6, rule7, rule8, rule9, rule10, rule11, rule12));;
 
 		
 		RuleController ruleController = new RuleController();
@@ -67,10 +76,39 @@ public class TestDocTor {
 		
 		LayerController layerController= new LayerController();
 		
-		InferenceTree inferenceTree = layerController.stratifyEventFromRule(listIDConclude, listAllRule, rule1);
-//		inferenceTree.display();
+		InferenceTree inferenceTree = layerController.stratifyEventFromRule(listAllRule, rule1);
+		inferenceTree.display();
 		
-		layerController.divideAndEditRuleTree(inferenceTree, 2);
+		InferenceTreeController inferenceTreeController = new InferenceTreeController();
+		
+		ArrayList<String> listPrimaryEvent = inferenceTreeController.getListPrimaryEventFromInferenceTree(inferenceTree, listAllRule);
+		for(int i =0; i< listPrimaryEvent.size(); i++){
+			System.out.println(listPrimaryEvent.get(i));
+		}
+		
+		/*
+		 * System.out.println("-------------------------------------------------------------");
+		ArrayList<InferenceTree> listTree = layerController.dividedAllTree(inferenceTree);
+		for(int i =0; i<listTree.size(); i++){
+			listTree.get(i).display();
+			System.out.println("-----------------------");
+		}
+		*/
+		
+		/*
+		 * ArrayList<InferenceTree> testDivide = layerController.divideAndEditRuleTree(inferenceTree, 2);
+		for(int i =0; i<testDivide.size(); i++){
+			testDivide.get(i).display();
+			System.out.println("-----------------------");
+		}
+		*/
+		
+//		ArrayList<InferenceTree> testDivide = layerController.dividedAllTreeLayer(inferenceTree, 2);
+//		for(int i =0; i<testDivide.size(); i++){
+//			testDivide.get(i).display();
+//			System.out.println("-----------------------");
+//		}
+		
 		
 		/*
 		ArrayList<Rule> listRule = ruleController.getRuleHaveSameConclude(inferenceTree.getListLayerGroup().get(3).getListRule());

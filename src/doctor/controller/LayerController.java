@@ -19,10 +19,11 @@ public class LayerController {
 
 	// Phân tầng cho các luật, tầng 0 là gốc, cây suy diễn sẽ suy diễn lùi về
 	// là, mỗi lần tăng số thứ tự tầng thêm 1.
-	public InferenceTree stratifyEventFromRule(ArrayList<String> listIDConclude, ArrayList<Rule> listAllRule,
+	public InferenceTree stratifyEventFromRule(ArrayList<Rule> listAllRule,
 			Rule rule) {
 		// ArrayList<LayerDeductionGroup> listLayerDeductionGroup = new
 		// ArrayList<>();
+		ArrayList<String> listIDConclude = ruleController.getAllIdConclude(listAllRule);
 		InferenceTree inferenceTree = new InferenceTree();
 		int numLayer = 0;
 		int number_remember = 0;
@@ -129,7 +130,7 @@ public class LayerController {
 	}
 
 	// tách một cây suy diễn thành nhiều cây suy diễn (khi có các luật cùng
-	// chung kết luận tại một tầng) và loại bỏ dư thừa trên các cây con.
+	// chung kết luận tại một tầng) và loại bỏ dư thừa trên các cây con. Ở đây chỉ phân tách một nhóm luật cùng chung kết luận.
 	public ArrayList<InferenceTree> divideAndEditRuleTree(InferenceTree ruleTree, int numberLayer) {
 		ArrayList<InferenceTree> listTree = new ArrayList<>();
 		LayerDeductionGroup lds = new LayerDeductionGroup();
@@ -138,70 +139,79 @@ public class LayerController {
 				lds = ruleTree.getListLayerGroup().get(i);
 			}
 		}
-		ruleTree.getListLayerGroup().remove(lds);
 		// ruleTree.display();
 
 		// Chia nhóm các luật khi có nhiều luật chung kết luận
 		ArrayList<ArrayList<Rule>> newListLayerRule = ruleController
 				.divideRuleGroupWhenHaveSameIdConclude(lds.getListRule());
+		if (newListLayerRule.size() <= 1) {
+			listTree.add(ruleTree);
+		} else {
+			ruleTree.getListLayerGroup().remove(lds);
 
-		ArrayList<LayerDeductionGroup> listLayerRuleRemove = new ArrayList<>();
+			for (int i = 0; i < newListLayerRule.size(); i++) {
 
-		for (int i = 0; i < newListLayerRule.size(); i++) {
+				ArrayList<LayerDeductionGroup> listLds = new ArrayList<>();
+				ArrayList<LayerDeductionGroup> listCopy = (ArrayList<LayerDeductionGroup>) ObjectCopier.copy(ruleTree.getListLayerGroup());
+				listLds.addAll(listCopy);
+				LayerDeductionGroup addLds = new LayerDeductionGroup(numberLayer, newListLayerRule.get(i));
+				listLds.add(addLds);
+				Collections.sort(listLds);
+//				mergeArrayList(listLds, listLayerRuleRemove);
+				InferenceTree tree_tmp = new InferenceTree(listLds);
+				// tree_tmp.display();
 
-			ArrayList<LayerDeductionGroup> listLds = new ArrayList<>();
-			listLds.addAll(ruleTree.getListLayerGroup());
-			LayerDeductionGroup addLds = new LayerDeductionGroup(numberLayer, newListLayerRule.get(i));
-			listLds.add(addLds);
-			Collections.sort(listLds);
-			mergeArrayList(listLds, listLayerRuleRemove);
-			InferenceTree tree_tmp = new InferenceTree(listLds);
-			// tree_tmp.display();
-//			System.out.println("-------------------");
-
-			listLayerRuleRemove = deleteExcessRuleTree(tree_tmp);
-			tree_tmp.setListLayerGroup(listLds);
-			listTree.add(tree_tmp);
-			tree_tmp.display();
-
+				deleteExcessRuleTree(tree_tmp);
+				tree_tmp.setListLayerGroup(listLds);
+				listTree.add(tree_tmp);
+//				tree_tmp.display();
+//				System.out.println("-------------------");
+			}
 		}
 
 		return listTree;
 	}
-
-	//Trộn 2 arrayList
-	public void mergeArrayList(ArrayList<LayerDeductionGroup> listReturn, ArrayList<LayerDeductionGroup> listAdd) {
-		if (listAdd.size() == 0) {
-			return;
-		}
-		int maxLayer = listAdd.get(listAdd.size() - 1).getNumLayer();
-		// System.out.println("Max Layer: " + maxLayer);
-		int minLayer = listAdd.get(0).getNumLayer();
-		while (minLayer <= maxLayer) {
-			// LayerDeductionGroup ldgReturn = listReturn.get(minLayer);
-			LayerDeductionGroup ldgAdd = new LayerDeductionGroup();
-			for (int i = 0; i < listAdd.size(); i++) {
-				LayerDeductionGroup lds = listAdd.get(i);
-				if (lds.getNumLayer() == minLayer) {
-					ldgAdd = lds;
-					break;
-				}
+	
+	//Phân tách mọi cây trong một tầng. Phân tách tất cả các nhóm
+	public ArrayList<InferenceTree> dividedAllTreeLayer(InferenceTree ruleTree, int numberLayer){
+		ArrayList<InferenceTree> listInferenceTree = new ArrayList<>();
+		listInferenceTree.add(ruleTree);
+		boolean flag = true;
+		while(flag){
+			InferenceTree tree = listInferenceTree.remove(0);
+			ArrayList<InferenceTree> listTree_tmp = divideAndEditRuleTree(tree, numberLayer);
+			listInferenceTree.addAll(listTree_tmp);
+			if(listTree_tmp.size() == 1){
+				flag = false;
 			}
-			for (int i = 0; i < ldgAdd.getListRule().size(); i++) {
-				if (listReturn.get(minLayer).getListRule().indexOf(ldgAdd.getListRule().get(i)) < 0) {
-					listReturn.get(minLayer).getListRule().add(ldgAdd.getListRule().get(i));
-				}
-			}
-			minLayer++;
-
 		}
-
+		return listInferenceTree;
 	}
 	
-	public ArrayList<InferenceTree> dividedAllTree(InferenceTree inferenceTree){
+	
+	//Tách cây suy diễn, Từ một cây tách thành tất cả các cây suy diễn mà không có tầng nào có nhóm luật cùng chung kết luận và không có luật dư thừa
+	public ArrayList<InferenceTree> dividedAllTree(InferenceTree inferenceTree) {
 		ArrayList<InferenceTree> listInferenceTree = new ArrayList<>();
-		
-		
+		listInferenceTree.add(inferenceTree);
+		int lastIndex = inferenceTree.getListLayerGroup().size() - 1;
+		int maxLayer = inferenceTree.getListLayerGroup().get(lastIndex).getNumLayer();
+		int currentLayer = 0;
+		// System.out.println("MaxLayer: " + maxLayer);
+		while (currentLayer <= maxLayer) {
+//			System.out.println("Tang: " + currentLayer);
+			ArrayList<InferenceTree> listTree_temp = new ArrayList<>();
+			int numberTree = listInferenceTree.size();
+			int currentTree = 0;
+			while (currentTree < numberTree) {
+//				System.out.println("So thu tu cay: " + currentTree);
+				InferenceTree inferenceTree2 = listInferenceTree.get(currentTree);
+				ArrayList<InferenceTree> listDivideTree = dividedAllTreeLayer(inferenceTree2, currentLayer);
+				listTree_temp.addAll(listDivideTree);
+				currentTree++;
+			}
+			listInferenceTree = listTree_temp;
+			currentLayer++;
+		}
 		return listInferenceTree;
 	}
 
