@@ -17,6 +17,20 @@ public class Event implements Serializable{
 		this.name = name;
 		this.certainFactor = certainFactor;
 	}
+	
+	public Event(String iD) {
+		super();
+		ID = iD;
+		this.certainFactor = 0;
+	}
+
+
+	public Event(String iD, double certainFactor) {
+		super();
+		ID = iD;
+		this.certainFactor = certainFactor;
+	}
+
 	public String getID() {
 		return ID;
 	}
