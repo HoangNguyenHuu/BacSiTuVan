@@ -28,6 +28,17 @@ public class InferenceTreeController {
 		}
 		return getMax(listCertain);
 	}
+	// Từ một sự kiện kết luận và các sự kiện người dùng nhập vào, lấy ra độ tin tưởng cao nhất với sự kiện đó
+	public double getCertainFactorFromIdConclude(String id, ArrayList<Event> listEvent, ArrayList<Rule> listAllRule) {
+		InferenceTree inferenceTree = layerController.stratifyEventFromID(listAllRule, id);
+		ArrayList<InferenceTree> listInferenceTree = layerController.dividedAllTree(inferenceTree);
+		ArrayList<Double> listCertain = new ArrayList<>();
+		for(int i =0; i< listInferenceTree.size(); i++){
+			double certain = getCertainFactorFromOneTree(listInferenceTree.get(i), listEvent, listAllRule);
+			listCertain.add(certain);
+		}
+		return getMax(listCertain);
+	}
 	
 	// Lấy ra độ chắc chắn lớn nhất khi có nhiều cây suy diễn
 	public double getMax(ArrayList<Double> listCertain){

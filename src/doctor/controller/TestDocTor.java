@@ -93,8 +93,11 @@ public class TestDocTor {
 		Rule rule11 = new Rule("r11", id8, listID11, 0.7);
 		Rule rule12 = new Rule("r12", id8, listID12, 0.9);
 
-		ArrayList<Rule> listAllRule = new ArrayList<>(
-				Arrays.asList(rule1, rule2, rule3, rule4, rule5, rule6, rule7, rule8, rule9, rule10, rule11, rule12));
+		ArrayList<String> listID21 = new ArrayList<>(Arrays.asList(id2, id3, id4));
+		Rule rule20 = new Rule("rule20", id1, listID21, 0.9);
+
+		ArrayList<Rule> listAllRule = new ArrayList<>(Arrays.asList(rule1, rule2, rule3, rule4, rule5, rule6, rule7,
+				rule8, rule9, rule10, rule11, rule12, rule20));
 		;
 
 		ArrayList<Event> listAllEvent = new ArrayList<>(Arrays.asList(event1, event2, event3, event4, event5, event6,
@@ -109,26 +112,30 @@ public class TestDocTor {
 		LayerController layerController = new LayerController();
 
 		InferenceTree inferenceTree = layerController.stratifyEventFromID(listAllRule, id1);
-		 inferenceTree.display();
-//		// System.out.println("---------------------------------");
-//		ArrayList<InferenceTree> listTree = layerController.dividedAllTree(inferenceTree);
-//		// inferenceTree.display();//Nếu cần phục hồi xem phương thức
-//		// divideAndEditRuleTree trong LayerController
-//		// System.out.println();
-//		listTree.get(0).display();
-//		System.out.println("-------------------------------------------------");
-		// for (int i = 0; i < listTree.size(); i++) {
-		// listTree.get(i).display();
-		// System.out.println("-----------------------");
-		// }
+		inferenceTree.display();
+		System.out.println("---------------------------------");
+		ArrayList<InferenceTree> listTree = layerController.dividedAllTree(inferenceTree);
+		// inferenceTree.display();
+		// Nếu cần phục hồi xem phương thức
+		// divideAndEditRuleTree trong LayerController
+		System.out.println();
+		listTree.get(0).display();
+		System.out.println("-------------------------------------------------");
+		for (int i = 0; i < listTree.size(); i++) {
+			listTree.get(i).display();
+			System.out.println("-----------------------");
+		}
+		System.out.println(listTree.size());
 
 		InferenceTreeController inferenceTreeController = new InferenceTreeController();
-//		double certain = inferenceTreeController.getCertainFactor(rule1, listEvent, listAllRule);
-//		System.out.println(certain);
+		double certain = inferenceTreeController.getCertainFactorFromIdConclude(id1, listEvent, listAllRule);
+		System.out.println(certain);
 
-//		double certain = inferenceTreeController.getCertainFactorFromOneTree(listTree.get(0), listAllEvent, listAllRule);
-//		
-//		System.out.println("Do tin cay cua cay: " + certain);
+		// double certain =
+		// inferenceTreeController.getCertainFactorFromOneTree(listTree.get(0),
+		// listAllEvent, listAllRule);
+		//
+		// System.out.println("Do tin cay cua cay: " + certain);
 		/*
 		 * System.out.println("Check: " +
 		 * inferenceTreeController.checkEventFromTree(
@@ -143,12 +150,14 @@ public class TestDocTor {
 		 * i++) { System.out.println(listPrimaryEvent.get(i).getID()); }
 		 */
 
-		/*System.out.println("--------------------------------------------------------------------------");
-		ArrayList<EventLayer> listEventLayer = inferenceTreeController.stratifyEventFromTree(listTree.get(0));
-		for (int i = 0; i < listEventLayer.size(); i++) {
-			listEventLayer.get(i).display();
-		}
-		*/
+		/*
+		 * System.out.println(
+		 * "--------------------------------------------------------------------------"
+		 * ); ArrayList<EventLayer> listEventLayer =
+		 * inferenceTreeController.stratifyEventFromTree(listTree.get(10)); for
+		 * (int i = 0; i < listEventLayer.size(); i++) {
+		 * listEventLayer.get(i).display(); }
+		 */
 
 		/*
 		 * ArrayList<String> testGet =
