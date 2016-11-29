@@ -83,46 +83,44 @@ public class BacSiTuVan {
 		String id63 = "4104"; // Lời khuyên cho người bị sốt phát ban
 		String id64 = "4105"; // Lời khuyên cho người bị sốt siêu vi
 		String id65 = "4106"; // Lời khuyên cho người bị sốt xuất huyết
-		
-		
-		Event ev1 = new Event(id1,"Trẻ em", 1);
-		Event ev2 = new Event(id2,"Người lớn", 1);
-		Event ev3 = new Event(id3,"Nam", 1);
-		Event ev4 = new Event(id4,"Nữ", 1);
-		Event ev5 = new Event(id5,"Nhiệt độ từ 36,5 đến 37,5", 1);
-		Event ev6 = new Event(id6,"Nhiệt độ từ 37,5 đến 38,5", 1);
-		Event ev7 = new Event(id7,"Nhiệt độ từ 38,5 đến 39", 1);
-		Event ev8 = new Event(id8,"Nhiệt độ từ 39 đến 40", 1);
-		Event ev9 = new Event(id9,"Nhiệt độ >40", 1);
-		Event ev10 = new Event(id10,"Thân nhiệt bình thường", 1);
-		Event ev11 = new Event(id11,"Sốt nhẹ", 1);
-		Event ev12 = new Event(id12,"Sốt vừa", 1);
-		Event ev13 = new Event(id13,"Sốt cao", 1);
-		Event ev14 = new Event(id14,"Sốt rất cao", 1);
-		Event ev15 = new Event(id15,"Nhịp tim nhỏ hơn 65 lần/phút", 1);
-		Event ev16 = new Event(id16,"Nhịp tim từ 65 đến 80 lần/phút", 1);
-		Event ev17 = new Event(id17,"Nhịp tim > 80 lần/phút", 1);
-		Event ev18 = new Event(id18,"Nhịp tim chậm", 1);
-		Event ev19 = new Event(id19,"Nhịp tim bình thường", 1);
-		Event ev20 = new Event(id20,"Nhịp tim nhanh", 1);
-		Event ev21 = new Event(id21,"Ho thường", 1);
-		Event ev22 = new Event(id22,"Ho khan", 1);
-		Event ev23 = new Event(id23,"Ho đờm", 1);
-		Event ev24 = new Event(id24,"Chảy mũi", 1);
-		Event ev25 = new Event(id25,"Đau đầu", 1);
-		Event ev26 = new Event(id26,"Buồn nôn", 1);
-		Event ev27 = new Event(id27,"Ói mửa", 1);
-		Event ev28 = new Event(id28,"Tức ngực", 1);
-		Event ev29 = new Event(id29,"Tiêu chảy", 1);
-		Event ev30 = new Event(id30,"Hắt hơi", 1);
-		Event ev31 = new Event(id31,"Rối loạn ý thức", 1);
-		Event ev32 = new Event(id32,"Phát ban", 1);
-		Event ev33 = new Event(id33,"Chảy máu dưới da", 1);
-		Event ev34 = new Event(id34,"Chảy máu chân răng", 1);
-		Event ev35 = new Event(id35,"Đau họng", 1);
-		Event ev36 = new Event(id36,"Chảy máu mũi", 1);
-		Event ev37 = new Event(id37,"Sưng hạch", 1);
-		
+
+		Event ev1 = new Event(id1, "Trẻ em", 1);
+		Event ev2 = new Event(id2, "Người lớn", 1);
+		Event ev3 = new Event(id3, "Nam", 1);
+		Event ev4 = new Event(id4, "Nữ", 1);
+		Event ev5 = new Event(id5, "Nhiệt độ từ 36,5 đến 37,5", 1);
+		Event ev6 = new Event(id6, "Nhiệt độ từ 37,5 đến 38,5", 1);
+		Event ev7 = new Event(id7, "Nhiệt độ từ 38,5 đến 39", 1);
+		Event ev8 = new Event(id8, "Nhiệt độ từ 39 đến 40", 1);
+		Event ev9 = new Event(id9, "Nhiệt độ >40", 1);
+		Event ev10 = new Event(id10, "Thân nhiệt bình thường", 1);
+		Event ev11 = new Event(id11, "Sốt nhẹ", 1);
+		Event ev12 = new Event(id12, "Sốt vừa", 1);
+		Event ev13 = new Event(id13, "Sốt cao", 1);
+		Event ev14 = new Event(id14, "Sốt rất cao", 1);
+		Event ev15 = new Event(id15, "Nhịp tim nhỏ hơn 65 lần/phút", 1);
+		Event ev16 = new Event(id16, "Nhịp tim từ 65 đến 80 lần/phút", 1);
+		Event ev17 = new Event(id17, "Nhịp tim > 80 lần/phút", 1);
+		Event ev18 = new Event(id18, "Nhịp tim chậm", 1);
+		Event ev19 = new Event(id19, "Nhịp tim bình thường", 1);
+		Event ev20 = new Event(id20, "Nhịp tim nhanh", 1);
+		Event ev21 = new Event(id21, "Ho thường", 1);
+		Event ev22 = new Event(id22, "Ho khan", 1);
+		Event ev23 = new Event(id23, "Ho đờm", 1);
+		Event ev24 = new Event(id24, "Chảy mũi", 1);
+		Event ev25 = new Event(id25, "Đau đầu", 1);
+		Event ev26 = new Event(id26, "Buồn nôn", 1);
+		Event ev27 = new Event(id27, "Ói mửa", 1);
+		Event ev28 = new Event(id28, "Tức ngực", 1);
+		Event ev29 = new Event(id29, "Tiêu chảy", 1);
+		Event ev30 = new Event(id30, "Hắt hơi", 1);
+		Event ev31 = new Event(id31, "Rối loạn ý thức", 1);
+		Event ev32 = new Event(id32, "Phát ban", 1);
+		Event ev33 = new Event(id33, "Chảy máu dưới da", 1);
+		Event ev34 = new Event(id34, "Chảy máu chân răng", 1);
+		Event ev35 = new Event(id35, "Đau họng", 1);
+		Event ev36 = new Event(id36, "Chảy máu mũi", 1);
+		Event ev37 = new Event(id37, "Sưng hạch", 1);
 
 		ArrayList<String> listID1 = new ArrayList<>(Arrays.asList(id5));
 		ArrayList<String> listID2 = new ArrayList<>(Arrays.asList(id6));
@@ -176,6 +174,28 @@ public class BacSiTuVan {
 		ArrayList<String> listID50 = new ArrayList<>(Arrays.asList(id13, id25, id33));
 		ArrayList<String> listID51 = new ArrayList<>(Arrays.asList(id13, id25, id34));
 		ArrayList<String> listID52 = new ArrayList<>(Arrays.asList(id13, id25, id37));
+		ArrayList<String> listID53 = new ArrayList<>(Arrays.asList(id38, id2));
+		ArrayList<String> listID54 = new ArrayList<>(Arrays.asList(id38, id1));
+		ArrayList<String> listID55 = new ArrayList<>(Arrays.asList(id39));
+		ArrayList<String> listID56 = new ArrayList<>(Arrays.asList(id40, id2));
+		ArrayList<String> listID57 = new ArrayList<>(Arrays.asList(id40, id1));
+		ArrayList<String> listID58 = new ArrayList<>(Arrays.asList(id41));
+		ArrayList<String> listID59 = new ArrayList<>(Arrays.asList(id42));
+		ArrayList<String> listID60 = new ArrayList<>(Arrays.asList(id43));
+		ArrayList<String> listID61 = new ArrayList<>(Arrays.asList(id44, id2));
+		ArrayList<String> listID62 = new ArrayList<>(Arrays.asList(id44, id1));
+		ArrayList<String> listID63 = new ArrayList<>(Arrays.asList(id45, id2));
+		ArrayList<String> listID64 = new ArrayList<>(Arrays.asList(id45, id1));
+		ArrayList<String> listID65 = new ArrayList<>(Arrays.asList(id46));
+		ArrayList<String> listID66 = new ArrayList<>(Arrays.asList(id38));
+		ArrayList<String> listID67 = new ArrayList<>(Arrays.asList(id39));
+		ArrayList<String> listID68 = new ArrayList<>(Arrays.asList(id40));
+		ArrayList<String> listID69 = new ArrayList<>(Arrays.asList(id41));
+		ArrayList<String> listID70 = new ArrayList<>(Arrays.asList(id42));
+		ArrayList<String> listID71 = new ArrayList<>(Arrays.asList(id43));
+		ArrayList<String> listID72 = new ArrayList<>(Arrays.asList(id44));
+		ArrayList<String> listID73 = new ArrayList<>(Arrays.asList(id45));
+		ArrayList<String> listID74 = new ArrayList<>(Arrays.asList(id46));
 
 		Rule rule1 = new Rule("r1", id10, listID1, 0.9);
 		Rule rule2 = new Rule("r2", id11, listID2, 0.9);
@@ -233,12 +253,41 @@ public class BacSiTuVan {
 		Rule rule54 = new Rule("r54", id46, listID50, 0.8);
 		Rule rule55 = new Rule("r55", id46, listID51, 0.8);
 		Rule rule56 = new Rule("r56", id46, listID52, 0.8);
+		Rule rule57 = new Rule("r57", id47, listID53, 0.9);
+		Rule rule58 = new Rule("r58", id48, listID54, 0.9);
+		Rule rule59 = new Rule("r59", id51, listID55, 0.9);
+		Rule rule60 = new Rule("r60", id49, listID56, 0.9);
+		Rule rule61 = new Rule("r61", id50, listID57, 0.9);
+		Rule rule62 = new Rule("r62", id52, listID58, 0.9);
+		Rule rule63 = new Rule("r63", id53, listID59, 0.9);
+		Rule rule64 = new Rule("r64", id54, listID60, 0.9);
+		Rule rule65 = new Rule("r65", id55, listID61, 0.9);
+		Rule rule66 = new Rule("r66", id56, listID62, 0.9);
+		Rule rule67 = new Rule("r67", id57, listID63, 0.9);
+		Rule rule68 = new Rule("r68", id58, listID64, 0.9);
+		Rule rule69 = new Rule("r69", id59, listID65, 0.9);
+		Rule rule70 = new Rule("r70", id60, listID66, 0.9);
+		Rule rule71 = new Rule("r71", id60, listID67, 0.9);
+		Rule rule72 = new Rule("r72", id60, listID68, 0.9);
+		Rule rule73 = new Rule("r73", id60, listID69, 0.9);
+		Rule rule74 = new Rule("r74", id61, listID70, 0.9);
+		Rule rule75 = new Rule("r75", id62, listID71, 0.9);
+		Rule rule76 = new Rule("r76", id63, listID72, 0.9);
+		Rule rule77 = new Rule("r77", id64, listID73, 0.9);
+		Rule rule78 = new Rule("r78", id65, listID74, 0.9);
 
 		ArrayList<Rule> listAllRule = new ArrayList<>(Arrays.asList(rule1, rule2, rule3, rule4, rule5, rule6, rule7,
 				rule8, rule9, rule10, rule11, rule12, rule13, rule14, rule15, rule16, rule17, rule18, rule19, rule20,
 				rule21, rule22, rule23, rule24, rule25, rule26, rule27, rule28, rule29, rule30, rule31, rule32, rule33,
 				rule34, rule35, rule36, rule37, rule38, rule39, rule40, rule41, rule42, rule43, rule44, rule45, rule46,
-				rule47, rule48, rule49, rule50, rule51, rule52, rule53, rule54, rule55, rule56));
+				rule47, rule48, rule49, rule50, rule51, rule52, rule53, rule54, rule55, rule56, rule57, rule58, rule59,
+				rule60, rule61, rule62, rule63, rule64, rule65, rule66, rule67, rule68, rule69, rule70, rule71, rule72,
+				rule73, rule74, rule75, rule76, rule77, rule78));
+
+		ArrayList<Event> listAllEvent = new ArrayList<>(Arrays.asList(ev1, ev2, ev3, ev4, ev5, ev6, ev7, ev8, ev9, ev10,
+				ev11, ev12, ev13, ev14, ev15, ev16, ev17, ev18, ev19, ev20, ev21, ev22, ev23, ev24, ev25, ev26, ev27,
+				ev28, ev29, ev30, ev31, ev32, ev33, ev34, ev35, ev36, ev37));
+		
 		// String idConclude = "2101";
 		// ArrayList<Rule> myListRule = getRulesFromConclude(listRule,
 		// idConclude);
