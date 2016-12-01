@@ -118,18 +118,18 @@ public class TestDocTor {
 		// inferenceTree.display();
 		// Nếu cần phục hồi xem phương thức
 		// divideAndEditRuleTree trong LayerController
-		System.out.println();
-		listTree.get(0).display();
-		System.out.println("-------------------------------------------------");
-		for (int i = 0; i < listTree.size(); i++) {
-			listTree.get(i).display();
-			System.out.println("-----------------------");
-		}
-		System.out.println(listTree.size());
-
-		InferenceTreeController inferenceTreeController = new InferenceTreeController();
-		double certain = inferenceTreeController.getCertainFactorFromIdConclude(id1, listEvent, listAllRule);
-		System.out.println(certain);
+//		System.out.println();
+//		listTree.get(0).display();
+//		System.out.println("-------------------------------------------------");
+//		for (int i = 0; i < listTree.size(); i++) {
+//			listTree.get(i).display();
+//			System.out.println("-----------------------");
+//		}
+//		System.out.println(listTree.size());
+//
+//		InferenceTreeController inferenceTreeController = new InferenceTreeController(listAllRule);
+//		double certain = inferenceTreeController.getCertainFactorFromIdConclude(id1, listEvent);
+//		System.out.println(certain);
 
 		// double certain =
 		// inferenceTreeController.getCertainFactorFromOneTree(listTree.get(0),

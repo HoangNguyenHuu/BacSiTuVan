@@ -61,7 +61,7 @@ public class LayerController {
 
 		return inferenceTree;
 	}
-
+	//Tạo cây suy diễn từ ID kết luận
 	public InferenceTree stratifyEventFromID(ArrayList<Rule> listAllRule, String idConclude) {
 		// ArrayList<LayerDeductionGroup> listLayerDeductionGroup = new
 		// ArrayList<>();

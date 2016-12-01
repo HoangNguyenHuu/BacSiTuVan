@@ -11,30 +11,132 @@ import doctor.model.Rule;
 public class InferenceTreeController {
 
 	private LayerController layerController;
+	private ArrayList<Rule> listAllRule;
+	private ArrayList<Event> listAllEvent;
 
-	public InferenceTreeController() {
+	public InferenceTreeController(ArrayList<Rule> listAllRule,
+			ArrayList<Event> listAllEvent) {
 		super();
 		this.layerController = new LayerController();
+		this.listAllRule = listAllRule;
+		this.listAllEvent = listAllEvent;
 	}
 
+	//Từ một tập các sự kiện được người dùng nhập vào, tìm ra bệnh có xác suất cao nhất
+	public Event getDisease(ArrayList<Event> listUserEvent){
+		Event result = new Event("2000", "Không tìm ra bệnh", 0.0);
+		EventController eventController = new EventController(listAllEvent);
+
+		ArrayList<Event> listDisease = eventController.getListDisease();
+		ArrayList<Event> resultDisease = new ArrayList<>();
+		for(int i = 0; i< listDisease.size(); i++){
+			String id = listDisease.get(i).getID();
+			String name = listDisease.get(i).getName();
+			double certain = getCertainFactorFromIdConclude(id, listUserEvent);
+			Event temp = new Event(id, name, certain);
+			resultDisease.add(temp);
+		}
+		ArrayList<Double> listCertain = new ArrayList<>();
+		for(int i =0; i< resultDisease.size(); i++){
+			listCertain.add(resultDisease.get(i).getCertainFactor());
+		}
+		
+		double max = getMax(listCertain);
+		if(max == 0){
+			return result;
+		}
+		for(int i =0; i< resultDisease.size(); i++){
+			if(resultDisease.get(i).getCertainFactor() == max){
+				return resultDisease.get(i);
+			}
+		}
+		
+		return result;
+	}
+	
+	//Từ tập các sự kiện, bao gồm các sự kiện người dùng nhập vào và bệnh đã suy ra, tìm ra thuốc tương ứng.
+	public Event getMedicine(ArrayList<Event> listUserEvent){
+		Event medicine = new Event("3000", "Không có thuốc", 0.0);
+		EventController eventController = new EventController(listAllEvent);
+		ArrayList<Event> listMedicine = eventController.getListMedicine();
+		ArrayList<Event> resultMedicine = new ArrayList<>();
+		for(int i = 0; i< listMedicine.size(); i++){
+			String id = listMedicine.get(i).getID();
+			String name = listMedicine.get(i).getName();
+			double certain = getCertainFactorFromIdConclude(id, listUserEvent);
+			Event temp = new Event(id, name, certain);
+			resultMedicine.add(temp);
+		}
+		ArrayList<Double> listCertain = new ArrayList<>();
+		for(int i =0; i< resultMedicine.size(); i++){
+			listCertain.add(resultMedicine.get(i).getCertainFactor());
+		}
+		
+		double max = getMax(listCertain);
+		if(max == 0){
+			return medicine;
+		}
+		for(int i =0; i< resultMedicine.size(); i++){
+			if(resultMedicine.get(i).getCertainFactor() == max){
+				return resultMedicine.get(i);
+			}
+		}
+		
+		return medicine;
+		
+	}
+	
+	//Từ tập sự kiện của người dùng và sự kiện bệnh, tìm ra lời khuyên
+	public Event getAdvice(ArrayList<Event> listUserEvent){
+		Event advice = new Event("4000", "Không có lời khuyên", 0.0);
+		EventController eventController = new EventController(listAllEvent);
+		ArrayList<Event> listAdvice = eventController.getListAdvice();
+		ArrayList<Event> resultAdvice = new ArrayList<>();
+		for(int i = 0; i< listAdvice.size(); i++){
+			String id = listAdvice.get(i).getID();
+			String name = listAdvice.get(i).getName();
+			double certain = getCertainFactorFromIdConclude(id, listUserEvent);
+			Event temp = new Event(id, name, certain);
+			resultAdvice.add(temp);
+		}
+		ArrayList<Double> listCertain = new ArrayList<>();
+		for(int i =0; i< resultAdvice.size(); i++){
+			listCertain.add(resultAdvice.get(i).getCertainFactor());
+		}
+		
+		double max = getMax(listCertain);
+		if(max == 0){
+			return advice;
+		}
+		for(int i =0; i< resultAdvice.size(); i++){
+			if(resultAdvice.get(i).getCertainFactor() == max){
+				return resultAdvice.get(i);
+			}
+		}
+		
+		return advice;
+		
+	}
+	
+
 	// Từ một luật và các sự kiện, lấy ra độ tin tưởng cao nhất với sự kiện đó.
-	public double getCertainFactor(Rule rule, ArrayList<Event> listEvent, ArrayList<Rule> listAllRule) {
+	public double getCertainFactor(Rule rule, ArrayList<Event> listEvent) {
 		InferenceTree inferenceTree = layerController.stratifyEventFromRule(listAllRule, rule);
 		ArrayList<InferenceTree> listInferenceTree = layerController.dividedAllTree(inferenceTree);
 		ArrayList<Double> listCertain = new ArrayList<>();
 		for(int i =0; i< listInferenceTree.size(); i++){
-			double certain = getCertainFactorFromOneTree(listInferenceTree.get(i), listEvent, listAllRule);
+			double certain = getCertainFactorFromOneTree(listInferenceTree.get(i), listEvent);
 			listCertain.add(certain);
 		}
 		return getMax(listCertain);
 	}
 	// Từ một sự kiện kết luận và các sự kiện người dùng nhập vào, lấy ra độ tin tưởng cao nhất với sự kiện đó
-	public double getCertainFactorFromIdConclude(String id, ArrayList<Event> listEvent, ArrayList<Rule> listAllRule) {
+	public double getCertainFactorFromIdConclude(String id, ArrayList<Event> listEvent) {
 		InferenceTree inferenceTree = layerController.stratifyEventFromID(listAllRule, id);
 		ArrayList<InferenceTree> listInferenceTree = layerController.dividedAllTree(inferenceTree);
 		ArrayList<Double> listCertain = new ArrayList<>();
 		for(int i =0; i< listInferenceTree.size(); i++){
-			double certain = getCertainFactorFromOneTree(listInferenceTree.get(i), listEvent, listAllRule);
+			double certain = getCertainFactorFromOneTree(listInferenceTree.get(i), listEvent);
 			listCertain.add(certain);
 		}
 		return getMax(listCertain);
@@ -52,17 +154,15 @@ public class InferenceTreeController {
 	}
 
 	// Từ một cây suy diễn và một tập sự kiên, lấy ra độ tin cậy tương ứng
-	public double getCertainFactorFromOneTree(InferenceTree inferenceTree, ArrayList<Event> listEvent,
-			ArrayList<Rule> listAllRule) {
+	public double getCertainFactorFromOneTree(InferenceTree inferenceTree, ArrayList<Event> listEvent) {
 		double certain = 0;
-
-		ArrayList<Event> listIDPrimaryFromTree = getListPrimaryEventFromInferenceTree(inferenceTree, listAllRule);
+		ArrayList<Event> listIDPrimaryFromTree = getListPrimaryEventFromInferenceTree(inferenceTree);
+		
 		ArrayList<LayerDeductionGroup> listRuleLayerFromTree = inferenceTree.getListLayerGroup();
 		boolean check = checkEventFromTree(listIDPrimaryFromTree, listEvent);
 		if (check == false) {
 			return 0;
 		}
-
 		ArrayList<EventLayer> listLayerEvent = stratifyEventFromTree(inferenceTree);
 		for (int i = 0; i < listLayerEvent.size(); i++) {
 			EventLayer eventLayer = listLayerEvent.get(i);
@@ -194,8 +294,7 @@ public class InferenceTreeController {
 
 	// Từ một cây, get các sự kiện không phải là sự kiện kết luận của bất kỳ
 	// luật nào, đây chính là các sự kiện sơ cấp từ.
-	public ArrayList<Event> getListPrimaryEventFromInferenceTree(InferenceTree inferenceTree,
-			ArrayList<Rule> listAllRule) {
+	public ArrayList<Event> getListPrimaryEventFromInferenceTree(InferenceTree inferenceTree) {
 		ArrayList<Event> listPrimaryEvent = new ArrayList<>();
 		RuleController ruleController = new RuleController();
 		ArrayList<String> listIdConclude = ruleController.getAllIdConclude(listAllRule);
