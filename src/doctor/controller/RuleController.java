@@ -14,7 +14,7 @@ public class RuleController {
 		int length = listAllRule.size();
 		for (int i = 0; i < length; i++) {
 			Rule rule = listAllRule.get(i);
-			if (rule.getIdConclude() == idConclude && listConcludeRule.indexOf(rule) < 0) {
+			if (rule.getIdConclude().equals(idConclude) && listConcludeRule.indexOf(rule) < 0) {
 				listConcludeRule.add(rule);
 			}
 		}
@@ -78,7 +78,7 @@ public class RuleController {
 			ArrayList<Rule> listSameConclude = new ArrayList<>(Arrays.asList(rule));
 			for (int j = i + 1; j < length; j++) {
 				Rule rule2 = listRule.get(j);
-				if (rule2.getIdConclude() == rule.getIdConclude()) {
+				if (rule2.getIdConclude().equals(rule.getIdConclude())) {
 					listSameConclude.add(rule2);
 					continue;
 				} else {

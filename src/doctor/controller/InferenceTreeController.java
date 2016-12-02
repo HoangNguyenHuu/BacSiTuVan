@@ -267,6 +267,9 @@ public class InferenceTreeController {
 		ArrayList<EventLayer> listEventLayer = new ArrayList<>();
 		RuleController ruleController = new RuleController();
 		ArrayList<LayerDeductionGroup> listLayerRule = inferenceTree.getListLayerGroup();
+//		if(listEventLayer.size() == 0){
+//			return new ArrayList<EventLayer>();
+//		}
 		LayerDeductionGroup ldgRoot = listLayerRule.get(0);
 		String IDRoot = ldgRoot.getListRule().get(0).getIdConclude();
 		Event evRoot = new Event(IDRoot);

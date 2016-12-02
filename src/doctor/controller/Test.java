@@ -96,7 +96,7 @@ public class Test {
 		Event ev11 = new Event(id11, "Sốt nhẹ", 0);
 		Event ev12 = new Event(id12, "Sốt vừa", 0);
 		Event ev13 = new Event(id13, "Sốt cao", 0);
-		Event ev14 = new Event(id14, "Sốt rất cao", 1);
+		Event ev14 = new Event(id14, "Sốt rất cao", 0);
 		Event ev15 = new Event(id15, "Nhịp tim nhỏ hơn 65 lần/phút", 0);
 		Event ev16 = new Event(id16, "Nhịp tim từ 65 đến 80 lần/phút", 0);
 		Event ev17 = new Event(id17, "Nhịp tim > 80 lần/phút", 0);
@@ -149,22 +149,22 @@ public class Test {
 		Event ev59 = new Event(id59,
 				" Đây là loại sốt nguy hiểm, cần đưa ngay tới các cơ sở y tế để được điều trị kịp thời", 0);
 		Event ev60 = new Event(id60,
-				" Tăng cường vệ sinh cá nhân: tắm rửa, rửa tay bằng xà phòng.\n Vệ sinh chỗ ở sạch sẽ, thoáng mát.\n Đeo khẩu trang khi ra ngoài.\n",
+				" Tăng cường vệ sinh cá nhân: tắm rửa, rửa tay bằng xà phòng. Vệ sinh chỗ ở sạch sẽ, thoáng mát. Đeo khẩu trang khi ra ngoài.",
 				0);
 		Event ev61 = new Event(id61,
-				" Mặc ấm khi ra đường, gồm cả mũ, giày, khẩu trang để không bị lạnh xâm nhập.\n Ăn thức ăn và uống nước còn nóng, tránh hút thuốc và tập thể dục thường xuyên.",
+				" Mặc ấm khi ra đường, gồm cả mũ, giày, khẩu trang để không bị lạnh xâm nhập. Ăn thức ăn và uống nước còn nóng, tránh hút thuốc và tập thể dục thường xuyên.",
 				0);
 		Event ev62 = new Event(id62,
-				" Tránh ra ngoài đường nắng nóng khi không cần thiết, nếu đi cần che kín toàn thân để không bị nắng chiếu vào.\n Đi lại hoặc nằm nghỉ ở những nơi thoáng mát.\n Tránh ăn đồ cay nóng, tránh làm việc quá sức.",
+				" Tránh ra ngoài đường nắng nóng khi không cần thiết, nếu đi cần che kín toàn thân để không bị nắng chiếu vào. Đi lại hoặc nằm nghỉ ở những nơi thoáng mát. Tránh ăn đồ cay nóng, tránh làm việc quá sức.",
 				0);
 		Event ev63 = new Event(id63,
-				" Nghỉ ngơi và điều trị tại nhà, tránh lây bệnh cho người khác.\n Vệ sinh thân thể bằng nước muối ấm, tránh dùng nước lạnh.\n Bổ sung vitamin C và uống thuốc khi bị sốt.\n Nếu có dấu hiệu biến chứng lạ, cần đưa đến cơ sở y tế để kịp thời chữa trị.",
+				" Nghỉ ngơi và điều trị tại nhà, tránh lây bệnh cho người khác. Vệ sinh thân thể bằng nước muối ấm, tránh dùng nước lạnh. Bổ sung vitamin C và uống thuốc khi bị sốt. Nếu có dấu hiệu biến chứng lạ, cần đưa đến cơ sở y tế để kịp thời chữa trị.",
 				0);
 		Event ev64 = new Event(id64,
-				"Đảm bảo vệ sinh ăn uống, môi trường sống thoáng mát sạch sẽ.\n Người chăm sóc luôn cần đeo khẩu trang khi chăm sóc bệnh nhân.\n Đưa ngay tới các cơ sở khám chữa bệnh để điều trị nếu có các biểu hiện lạ như: tím tái, co giật, nôn ói liên tục,...",
+				"Đảm bảo vệ sinh ăn uống, môi trường sống thoáng mát sạch sẽ. Người chăm sóc luôn cần đeo khẩu trang khi chăm sóc bệnh nhân. Đưa ngay tới các cơ sở khám chữa bệnh để điều trị nếu có các biểu hiện lạ như: tím tái, co giật, nôn ói liên tục,...",
 				0);
 		Event ev65 = new Event(id65,
-				" Vệ sinh môi trường sạch sẽ, đặc biệt là các đồ chứa, bể đựng nước, tránh cho muỗi phát triển.\n Khi ngủ cần dùng màn.\n Đưa đến cơ sở khám chữa bệnh nếu tiếp tục có biểu hiện lạ",
+				" Vệ sinh môi trường sạch sẽ, đặc biệt là các đồ chứa, bể đựng nước, tránh cho muỗi phát triển. Khi ngủ cần dùng màn. Đưa đến cơ sở khám chữa bệnh nếu tiếp tục có biểu hiện lạ",
 				0);
 
 		ArrayList<String> listID1 = new ArrayList<>(Arrays.asList(id5));
@@ -334,6 +334,43 @@ public class Test {
 				ev28, ev29, ev30, ev31, ev32, ev33, ev34, ev35, ev36, ev37, ev38, ev39, ev40, ev41, ev42, ev43, ev44,
 				ev45, ev46, ev47, ev48, ev49, ev50, ev51, ev52, ev53, ev54, ev55, ev56, ev57, ev58, ev59, ev60, ev61,
 				ev62, ev63, ev64, ev65));
+		ReadWriteEventRule readWriteEventRule = new ReadWriteEventRule();
+		readWriteEventRule.writeAllEvent(listAllEvent);
+		readWriteEventRule.writeAllRule(listAllRule);
+//		Event evTest = new Event("5000", "TestEvent", 0.0);
+//		Rule ruleTest = new Rule("79", "test", listID27, 0.9);
+//		readWriteEventRule.writeOneEvent(evTest);
+//		readWriteEventRule.writeOneRule(ruleTest);
+		
+//		ArrayList<Event> myList = readWriteEventRule.readAllEvent();
+//		for(int i = 0 ; i< myList.size(); i++){
+//			Event tmp = myList.get(i);
+//			System.out.println(tmp.getID() + " " + tmp.getName());
+//		}
+		
+//		ArrayList<Rule> myListRule = readWriteEventRule.readAllRule();
+//		for(int i =0; i< myListRule.size(); i++){
+//			Rule tmp_rule = myListRule.get(i);
+//			for(int j =0; j <tmp_rule.getListIDHypothesis().size(); j++){
+//				System.out.print(tmp_rule.getListIDHypothesis().get(j) + " ");
+//			}
+//			System.out.println();
+//		}
+//		System.out.println();
+//		Event evupdate = new Event(id13, "Sốt cao", 0);
+//		System.out.println(evupdate.getID() + " " + evupdate.getName());
+//		readWriteEventRule.updateAnEvent(evupdate);
+		
+		
+		
+//		Rule ruleUpdate = new Rule("r23", id39 , listID1, 0.0);
+//		readWriteEventRule.updateARule(rule23);
+		
+//		String nextRule = readWriteEventRule.getIdForNewRule();
+//		System.out.println(nextRule);
+		
+		
+		
 		Event evTest1 = new Event("1205", 0.8);
 		Event evTest2 = new Event("1405", 0.8);
 		Event evTest3 = new Event("1303", 0.8);
@@ -341,17 +378,16 @@ public class Test {
 		Event evTest5 = new Event("1410", 0.8);
 		Event evTest6 = new Event("1101", 1.0);
 		Event evTest7 = new Event("1111", 1.0);
-
 		ArrayList<Event> listEventTest = new ArrayList<>(Arrays.asList(evTest1, evTest2, evTest3, evTest4, evTest5, evTest6, evTest7));
 		InferenceTreeController inferenceTreeController = new InferenceTreeController(listAllRule, listAllEvent);
 		Event result = inferenceTreeController.getDisease(listEventTest);
 		listEventTest.add(result);
-		System.out.println(result.getID() + " " + result.getName() + " " + result.getCertainFactor());
+		System.out.println("Bệnh: " + result.getName());
 		Event medicine = inferenceTreeController.getMedicine(listEventTest);
 		listEventTest.add(medicine);
-		System.out.println(medicine.getID() + " " + medicine.getName() + " " + medicine.getCertainFactor());
+		System.out.println("Thuốc: " + medicine.getName());
 		Event advice = inferenceTreeController.getAdvice(listEventTest);
-		System.out.println(advice.getID() + " " + advice.getName() + " " + advice.getCertainFactor());
+		System.out.println("Lời khuyên: " + advice.getName());
 		
 		// EventController eventController = new EventController(listAllEvent);
 

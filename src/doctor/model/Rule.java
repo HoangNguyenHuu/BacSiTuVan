@@ -20,7 +20,6 @@ public class Rule implements Comparable<Rule>, Serializable{
 		ListIDHypothesis = listIDHypothesis;
 		this.certainFactor = certainFactor;
 	}
-
 	
 	
 	public String getIdRule() {

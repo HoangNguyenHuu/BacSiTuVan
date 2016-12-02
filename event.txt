@@ -1,0 +1,65 @@
+1101|Trẻ em|0
+1102|Người lớn|0
+1111|Nam|0
+1112|Nữ|0
+1201|Nhiệt độ từ 36,5 đến 37,5|0
+1202|Nhiệt độ từ 37,5 đến 38,5|0
+1203|Nhiệt độ từ 38,5 đến 39|0
+1204|Nhiệt độ từ 39 đến 40|0
+1205|Nhiệt độ >40|0
+1206|Thân nhiệt bình thường|0
+1207|Sốt nhẹ|0
+1208|Sốt vừa|0
+1209|Sốt cao|0
+1210|Sốt rất cao|0
+1301|Nhịp tim nhỏ hơn 65 lần/phút|0
+1302|Nhịp tim từ 65 đến 80 lần/phút|0
+1303|Nhịp tim > 80 lần/phút|0
+1304|Nhịp tim chậm|0
+1305|Nhịp tim bình thường|0
+1306|Nhịp tim nhanh|0
+1401|Ho thường|0
+1402|Ho khan|0
+1403|Ho đờm|0
+1404|Chảy mũi|0
+1405|Đau đầu|0
+1406|Buồn nôn|0
+1407|Ói mửa|0
+1408|Tức ngực|0
+1409|Tiêu chảy|0
+1410|Hắt hơi|0
+1411|Rối loạn ý thức|0
+1412|Phát ban|0
+1413|Chảy máu dưới da|0
+1414|Chảy máu chân răng|0
+1415|Đau họng|0
+1416|Chảy máu mũi|0
+1417|Sưng hạch|0
+2101|Bệnh nhân bị cúm A H1N1|0
+2102|Bệnh nhân bị cúm A H3N2|0
+2103|Bệnh nhân bị cúm A H5N1|0
+2104|Bệnh nhân bị cúm B|0
+2105|Bệnh nhân bị cảm lạnh|0
+2106|Bệnh nhân bị cảm nóng|0
+2107|Bệnh nhân bị sốt phát ban|0
+2108|Bệnh nhân bị sốt siêu vi|0
+2109|Bệnh nhân bị sốt xuất huyết|0
+3101|Tamiflu: 75 mg/lần, 2 lần/ngày, 5 ngày|0
+3102|Tamiflu: 30 mg/lần, 2 lần/ngày, 5 ngày|0
+3103|Arbido (Fludon) : 200 mg/ ngày, 5 ngày|0
+3104|Arbido (Fludon) : 50 mg/ ngày, 5 ngày|0
+3105|Bệnh này có nhiều biến chứng nguy hiểm, hãy đưa bệnh nhân tới các cơ sở y tế để điều trị tốt nhất|0
+3106|Cúm B là loại cúm nhẹ, chỉ cần nghỉ ngơi vài ngày là khỏi.|0
+3107|1 củ gừng tươi 15 – 20g, rửa sạch, thái lát, đổ 100ml nước đun sôi 20 phút, gạn ra, thêm đường và uống nóng|0
+3108|rau má tươi 12g, lá tre 12g, lá hương nhu 16g, củ sắn dây thái lát 12g. Nước vừa đủ, sắc uống ngày 1 thang chia 3 lần uống|0
+3109| acetaminophen, 400mg|0
+3110| acetaminophen, 200mg|0
+3111| paracetamol, 400mg|0
+3112| paracetamol, 200mg|0
+3113| Đây là loại sốt nguy hiểm, cần đưa ngay tới các cơ sở y tế để được điều trị kịp thời|0
+4101| Tăng cường vệ sinh cá nhân: tắm rửa, rửa tay bằng xà phòng. Vệ sinh chỗ ở sạch sẽ, thoáng mát. Đeo khẩu trang khi ra ngoài.|0
+4102| Mặc ấm khi ra đường, gồm cả mũ, giày, khẩu trang để không bị lạnh xâm nhập. Ăn thức ăn và uống nước còn nóng, tránh hút thuốc và tập thể dục thường xuyên.|0
+4103| Tránh ra ngoài đường nắng nóng khi không cần thiết, nếu đi cần che kín toàn thân để không bị nắng chiếu vào. Đi lại hoặc nằm nghỉ ở những nơi thoáng mát. Tránh ăn đồ cay nóng, tránh làm việc quá sức.|0
+4104| Nghỉ ngơi và điều trị tại nhà, tránh lây bệnh cho người khác. Vệ sinh thân thể bằng nước muối ấm, tránh dùng nước lạnh. Bổ sung vitamin C và uống thuốc khi bị sốt. Nếu có dấu hiệu biến chứng lạ, cần đưa đến cơ sở y tế để kịp thời chữa trị.|0
+4105|Đảm bảo vệ sinh ăn uống, môi trường sống thoáng mát sạch sẽ. Người chăm sóc luôn cần đeo khẩu trang khi chăm sóc bệnh nhân. Đưa ngay tới các cơ sở khám chữa bệnh để điều trị nếu có các biểu hiện lạ như: tím tái, co giật, nôn ói liên tục,...|0
+4106| Vệ sinh môi trường sạch sẽ, đặc biệt là các đồ chứa, bể đựng nước, tránh cho muỗi phát triển. Khi ngủ cần dùng màn. Đưa đến cơ sở khám chữa bệnh nếu tiếp tục có biểu hiện lạ|0
